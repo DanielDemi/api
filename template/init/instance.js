@@ -1,4 +1,4 @@
-import { createAPI } from '{{$$.relative("util")}}';
+import createAPI from '{{$$.relative("util")}}';
 import config from '{{$$.relative("config")}}';
 
 const baseUrl = {
