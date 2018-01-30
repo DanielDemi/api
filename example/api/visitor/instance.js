@@ -1,4 +1,4 @@
-import createAPI from '../util'
+import { createAPI } from '../util'
 import config from '../config'
 
 const baseUrl = {

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import configure from '../../config/index'
-import { Message, MessageBox } from 'hui'
+import { Message } from 'hui'
 import i18n from '@/i18n'
 
 const http = axios.create({
@@ -11,7 +11,6 @@ const http = axios.create({
 
 // 相应拦截器
 http.interceptors.response.use(function (response) {
-
   // 请求多语言的json文件
   if (response.config.url.indexOf('json') > -1) {
     return response
@@ -53,15 +52,20 @@ http.interceptors.request.use(function (config) {
   return Promise.reject(error)
 })
 
-function createAPI(baseURL) {
+function createAPI (baseURL) {
   return function (conf) {
-    conf = conf || {};
-    return http(Object.assign({}, {
+    conf = conf || {}
+    const baseUrl = process.env.NODE_ENV !== 'development' ? {} : {
+      baseURL: baseURL
+    }
+    return http(Object.assign(baseUrl, {
       url: conf.url,
-      baseURL: baseURL,
       method: conf.method
     }, conf.opts))
   }
 }
 
-export default createAPI
+export {
+  createAPI,
+  http
+}

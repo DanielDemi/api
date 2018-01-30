@@ -1,4 +1,4 @@
-import * as visitor from './visitor';
+import * as visitor from './visitor'
 
 export {
   visitor

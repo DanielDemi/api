@@ -11,7 +11,6 @@ const http = axios.create({
 
 // 相应拦截器
 http.interceptors.response.use(function (response) {
-
   // 请求多语言的json文件
   if (response.config.url.indexOf('json') > -1) {
     return response
@@ -54,10 +53,9 @@ http.interceptors.request.use(function (config) {
 })
 
 function createAPI (baseURL) {
-  return function (conf) {
-    conf = conf || {}
+  return function (conf = {}) {
     const baseUrl = process.env.NODE_ENV !== 'development' ? {} : {
-      baseURL: baseURL      
+      baseURL: baseURL
     }
     return http(Object.assign(baseUrl, {
       url: conf.url,

@@ -3,7 +3,7 @@ import config from '{{$$.relative("config")}}'
 
 const baseUrl = {
   mock: '{{$$.joinUrl(config.host, "mock", data.project._id, data.project.url)}}',
-  dev: '',
+  dev: '/',
   pre: '',
   prod: ''
 }[config.env || 'mock']
