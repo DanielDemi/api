@@ -1,5 +1,5 @@
-import * as demo from './demo';
+import * as visitor from './visitor';
 
 export {
-  demo
-};
+  visitor
+}

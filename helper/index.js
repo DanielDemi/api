@@ -10,11 +10,10 @@ var convertUrl = exports.convertUrl = function (url) {
 };
 
 exports.convertMethod = function (mock) {
-  // 防止重名
-  // restful_id_list_id => restful_id_list_id_g
-  // or
-  // restful_id_list_id => restful_id_list_id_p
-  return convertUrl(mock.url) + '_' + mock.method.toLowerCase();
+  var methodNameArr = mock.url.split('/').slice(4).map((item, index) => {
+    return index > 0 ? item.replace(/^(\w)/, firstLetter => firstLetter.toUpperCase()) : item
+  })
+  return methodNameArr.join('')
 };
 
 exports.joinUrl = function () {
