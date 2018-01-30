@@ -55,7 +55,7 @@ http.interceptors.request.use(function (config) {
 
 function createAPI (baseURL) {
   return function (conf) {
-    conf = conf || {};
+    conf = conf || {}
     return http(Object.assign({}, {
       url: conf.url,
       baseURL: baseURL,
