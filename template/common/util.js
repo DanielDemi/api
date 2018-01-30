@@ -53,7 +53,7 @@ http.interceptors.request.use(function (config) {
   return Promise.reject(error)
 })
 
-function createAPI(baseURL) {
+function createAPI (baseURL) {
   return function (conf) {
     conf = conf || {};
     return http(Object.assign({}, {
@@ -64,4 +64,7 @@ function createAPI(baseURL) {
   }
 }
 
-export default createAPI
+export {
+  createAPI,
+  http
+}
