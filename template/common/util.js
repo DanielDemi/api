@@ -1,6 +1,6 @@
 import axios from 'axios'
 import configure from '../../config/index'
-import { Message, MessageBox } from 'hui'
+import { Message } from 'hui'
 import i18n from '@/i18n'
 
 const http = axios.create({
