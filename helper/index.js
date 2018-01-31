@@ -10,10 +10,11 @@ var convertUrl = exports.convertUrl = function (url) {
 };
 
 exports.convertMethod = function (mock) {
-  var methodNameArr = mock.url.split('/').slice(4).map((item, index) => {
-    return index > 0 ? item.replace(/^(\w)/, firstLetter => firstLetter.toUpperCase()) : item
-  })
-  return methodNameArr.join('')
+  if (/\/v\d+.?\d*\//.test(mock.url)){
+    return mock.url.split(/\/v\d+.?\d*\//)[1].replace(/(\/\w)/g, firstLetter => firstLetter.replace('/','').toUpperCase())
+  } else {
+    return mock.url.replace(/\//, '').replace(/(\/\w)/g, firstLetter => firstLetter.replace('/','').toUpperCase())
+  }
 };
 
 exports.joinUrl = function () {
