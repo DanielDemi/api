@@ -1,5 +1,4 @@
 import axios from 'axios'
-import configure from '../../config/index'
 import { Message } from 'hui'
 import i18n from '@/i18n'
 
@@ -43,9 +42,6 @@ http.interceptors.response.use(function (response) {
 
 // 请求拦截器
 http.interceptors.request.use(function (config) {
-  if (config.url.indexOf('json') < 0) {
-    config.url = `${configure.apiPrefix + config.url}`
-  }
   return config
 }, function (error) {
   // 对请求错误做些什么
