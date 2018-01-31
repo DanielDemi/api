@@ -10,7 +10,7 @@ var convertUrl = exports.convertUrl = function (url) {
 };
 
 exports.convertMethod = function (mock) {
-  var methodNameArr = mock.url.split('/').slice(2).map((item, index) => {
+  var methodNameArr = mock.url.split('/').slice(4).map((item, index) => {
     return index > 0 ? item.replace(/^(\w)/, firstLetter => firstLetter.toUpperCase()) : item
   })
   return methodNameArr.join('')
