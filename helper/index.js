@@ -11,9 +11,9 @@ var convertUrl = exports.convertUrl = function (url) {
 
 exports.convertMethod = function (mock) {
   if (/\/v\d+.?\d*\//.test(mock.url)){
-    return mock.url.split(/\/v\d+.?\d*\//)[1].replace(/(\/\w)/g, firstLetter => firstLetter.replace('/','').toUpperCase())
+    return mock.url.split(/\/v\d+.?\d*\//)[1].replace(/[{}]/g, '').replace(/(\/\w)/g, firstLetter => firstLetter.replace('/','').toUpperCase())
   } else {
-    return mock.url.replace(/\//, '').replace(/(\/\w)/g, firstLetter => firstLetter.replace('/','').toUpperCase())
+    return mock.url.replace(/\//, '').replace(/[{}]/g, '').replace(/(\/\w)/g, firstLetter => firstLetter.replace('/','').toUpperCase())
   }
 };
 
