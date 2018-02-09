@@ -1,7 +1,3 @@
-import axios from 'axios'
-import { Message } from 'hui'
-import i18n from '@/i18n'
-
 function createAPI (baseURL, http) {
   return function (conf = {}) {
     const baseUrl = process.env.NODE_ENV !== 'development' ? {} : {

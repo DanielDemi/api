@@ -1,5 +1,8 @@
 import { createAPI } from '{{$$.relative("util")}}'
 import config from '{{$$.relative("config")}}'
+import axios from 'axios'
+import { Message } from 'hui'
+import i18n from '@/i18n'
 
 const baseUrl = {
   mock: '{{$$.joinUrl(config.host, "mock", data.project._id, data.project.url)}}',
