@@ -11,7 +11,6 @@ const baseUrl = {
   prod: ''
 }[config.env || 'mock']
 
-
 const http = axios.create({
   timeout: 20000,
   withCredentials: true,
