@@ -1,56 +1,83 @@
 import instance from './instance'
 import { convertRESTAPI } from '../util'
 
+/** 获取图片验证码 */
+function getImageCode (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/commonService/ui/v1/getImageCode',
+    opts: opts
+  })
+}
+
+/** 内部人员预约详情 */
+function ordersDetail (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/innerService/ui/v1/orders/detail',
+    opts: opts
+  })
+}
+
+/** 查找门禁点下读卡器树  doorId = "12324" */
+function readerTree (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/commonService/ui/v1/reader/tree',
+    opts: opts
+  })
+}
+
+/** 查找各个区域树选择点 */
+function pointFind (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/commonService/ui/v1/point/find',
+    opts: opts
+  })
+}
+
+/** 获取各区域权限组织树 */
+function areaTree (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/commonService/ui/v1/area/tree',
+    opts: opts
+  })
+}
+
+/** 获取人员部门组织树 */
+function deptTree (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/commonService/ui/v1/dept/tree',
+    opts: opts
+  })
+}
+
+/** 访客异常记录移动名单分组 */
+function groupRelsMove (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/groupService/ui/v1/groupRels/move',
+    opts: opts
+  })
+}
+
+/** 访客名单人员信息修改 */
+function groupRelsUpdate (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/groupService/ui/v1/groupRels/update',
+    opts: opts
+  })
+}
+
 /** 签离点删除 */
 function signOffPointsDelete (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/signOffService/v1/signOffPoints/delete',
-    opts: opts
-  })
-}
-
-/** 签离点信息查询 */
-function signOffPointFind (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/signOffService/v1/signOffPoint/find',
-    opts: opts
-  })
-}
-
-/** 签离点信息查询 */
-function signOffPoints (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/signOffService/v1/signOffPoints',
-    opts: opts
-  })
-}
-
-/** 签离点新增 */
-function signOffPointsAdd (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/signOffService/v1/signOffPoints/add',
-    opts: opts
-  })
-}
-
-/** 来访事由新增 */
-function purposesAdd (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/purposeService/v1/purposes/add',
-    opts: opts
-  })
-}
-
-/** 来访事由删除 */
-function purposesDelete (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/purposeService/v1/purposes/delete',
+    url: '/visitor/signOffService/ui/v1/signOffPoints/delete',
     opts: opts
   })
 }
@@ -59,34 +86,52 @@ function purposesDelete (opts) {
 function purposesUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/purposeService/v1/purposes/update',
+    url: '/visitor/purposeService/ui/v1/purposes/update',
     opts: opts
   })
 }
 
-/** 获取权限组分页展示信息 */
-function privilegeGroupPage (opts) {
+/** 签离点信息查询 */
+function signOffPointFind (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/page',
+    url: '/visitor/signOffService/ui/v1/signOffPoint/find',
     opts: opts
   })
 }
 
-/** 保存访客组信息 */
-function privilegeGroupSave (opts) {
+/** 签离点信息查询 */
+function signOffPoints (opts) {
   return instance({
-    method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/save',
+    method: 'get',
+    url: '/visitor/signOffService/ui/v1/signOffPoints',
     opts: opts
   })
 }
 
-/** 更新访客权限组基础信息 */
-function privilegeGroupUpdateInfo (opts) {
+/** 签离点新增 */
+function signOffPointsAdd (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/updateInfo',
+    url: '/visitor/signOffService/ui/v1/signOffPoints/add',
+    opts: opts
+  })
+}
+
+/** 来访事由新增 */
+function purposesAdd (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/purposeService/ui/v1/purposes/add',
+    opts: opts
+  })
+}
+
+/** 来访事由删除 */
+function purposesDelete (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/purposeService/ui/v1/purposes/delete',
     opts: opts
   })
 }
@@ -95,25 +140,7 @@ function privilegeGroupUpdateInfo (opts) {
 function purposes (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/purposeService/v1/purposes',
-    opts: opts
-  })
-}
-
-/** 根据ID获得访客组信息 */
-function privilegeGroupDetail (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/detail',
-    opts: opts
-  })
-}
-
-/** 依类别分页展示权限组中的权限项 */
-function privilegeGroupItemPage (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/itemPage',
+    url: '/visitor/purposeService/ui/v1/purposes',
     opts: opts
   })
 }
@@ -122,25 +149,52 @@ function privilegeGroupItemPage (opts) {
 function privilegeGroupItems (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/items',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/items',
     opts: opts
   })
 }
 
-/** 修改权限组默认启用状态 */
-function privilegeGroupChangeDefault (opts) {
+/** 获取权限组分页展示信息 */
+function privilegeGroupPage (opts) {
   return instance({
-    method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/changeDefault',
+    method: 'get',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/page',
     opts: opts
   })
 }
 
-/** 根据ID删除访客权限组 */
-function privilegeGroupDelete (opts) {
+/** 保存访客组信息 */
+function privilegeGroupSave (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/delete',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/save',
+    opts: opts
+  })
+}
+
+/** 更新访客权限组基础信息 */
+function privilegeGroupUpdateInfo (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/updateInfo',
+    opts: opts
+  })
+}
+
+/** 根据ID获得访客组信息 */
+function privilegeGroupDetail (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/detail',
+    opts: opts
+  })
+}
+
+/** 依类别分页展示权限组中的权限项 */
+function privilegeGroupItemPage (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/itemPage',
     opts: opts
   })
 }
@@ -149,7 +203,7 @@ function privilegeGroupDelete (opts) {
 function privilegeGroupDeleteItems (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/deleteItems',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/deleteItems',
     opts: opts
   })
 }
@@ -158,25 +212,25 @@ function privilegeGroupDeleteItems (opts) {
 function privilegeGroupAddItems (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/privilegeService/v1/privilegeGroup/addItems',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/addItems',
     opts: opts
   })
 }
 
-/** 添加门口机和停车场时需要的区域信息展示 */
-function privilegeItemRegion (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/privilegeItemService/v1/privilegeItem/region',
-    opts: opts
-  })
-}
-
-/** 保存已选择的权限项，可能会有新增，也可能有删除，也有不变的 */
-function privilegeItemSaveSelectItems (opts) {
+/** 修改权限组默认启用状态 */
+function privilegeGroupChangeDefault (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/privilegeItemService/v1/privilegeItem/saveSelectItems',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/changeDefault',
+    opts: opts
+  })
+}
+
+/** 根据ID删除访客权限组 */
+function privilegeGroupDelete (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/privilegeService/ui/v1/privilegeGroup/delete',
     opts: opts
   })
 }
@@ -185,25 +239,16 @@ function privilegeItemSaveSelectItems (opts) {
 function privilegeItemSelectedItems (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/privilegeItemService/v1/privilegeItem/selectedItems',
+    url: '/visitor/privilegeItemService/ui/v1/privilegeItem/selectedItems',
     opts: opts
   })
 }
 
-/** 获得待选择的权限项，需过滤已选择的，支持按名称搜索,停车场及门口机需传入区域ID */
-function privilegeItemAlternativeItem (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/privilegeItemService/v1/privilegeItem/alternativeItem',
-    opts: opts
-  })
-}
-
-/** 删除访客权限项 */
-function privilegeItemDeleteItems (opts) {
+/** 保存已选择的权限项，可能会有新增，也可能有删除，也有不变的 */
+function privilegeItemSaveSelectItems (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/privilegeItemService/v1/privilegeItem/deleteItems',
+    url: '/visitor/privilegeItemService/ui/v1/privilegeItem/saveSelectItems',
     opts: opts
   })
 }
@@ -212,7 +257,16 @@ function privilegeItemDeleteItems (opts) {
 function privilegeItemItemPage (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/privilegeItemService/v1/privilegeItem/itemPage',
+    url: '/visitor/privilegeItemService/ui/v1/privilegeItem/itemPage',
+    opts: opts
+  })
+}
+
+/** 添加门口机和停车场时需要的区域信息展示 */
+function privilegeItemRegion (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/privilegeItemService/ui/v1/privilegeItem/region',
     opts: opts
   })
 }
@@ -221,25 +275,25 @@ function privilegeItemItemPage (opts) {
 function personFuzzySearch (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/personService/v1/person/fuzzySearch',
+    url: '/visitor/personService/ui/v1/person/fuzzySearch',
     opts: opts
   })
 }
 
-/** 保存修改后的访客信息 */
-function orderUpdate (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/orderService/v1/order/update',
-    opts: opts
-  })
-}
-
-/** 下载访客预约模板 */
-function orderImportTemplate (opts) {
+/** 获得待选择的权限项，需过滤已选择的，支持按名称搜索,停车场及门口机需传入区域ID */
+function privilegeItemAlternativeItem (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/orderService/v1/order/importTemplate',
+    url: '/visitor/privilegeItemService/ui/v1/privilegeItem/alternativeItem',
+    opts: opts
+  })
+}
+
+/** 删除访客权限项 */
+function privilegeItemDeleteItems (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/privilegeItemService/ui/v1/privilegeItem/deleteItems',
     opts: opts
   })
 }
@@ -248,7 +302,7 @@ function orderImportTemplate (opts) {
 function orderPage (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/orderService/v1/order/page',
+    url: '/visitor/orderService/ui/v1/order/page',
     opts: opts
   })
 }
@@ -257,7 +311,25 @@ function orderPage (opts) {
 function orderReturn (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/orderService/v1/order/return',
+    url: '/visitor/orderService/ui/v1/order/return',
+    opts: opts
+  })
+}
+
+/** 保存修改后的访客信息 */
+function orderUpdate (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/orderService/ui/v1/order/update',
+    opts: opts
+  })
+}
+
+/** 下载访客预约模板 */
+function orderImportTemplate (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/orderService/ui/v1/order/importTemplate',
     opts: opts
   })
 }
@@ -266,7 +338,7 @@ function orderReturn (opts) {
 function orderDetail (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/orderService/v1/order/detail',
+    url: '/visitor/orderService/ui/v1/order/detail',
     opts: opts
   })
 }
@@ -275,16 +347,7 @@ function orderDetail (opts) {
 function orderImport (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/orderService/v1/order/import',
-    opts: opts
-  })
-}
-
-/** 获得导入预约文件的校验进度 */
-function orderCheckProgress (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/orderService/v1/order/checkProgress',
+    url: '/visitor/orderService/ui/v1/order/import',
     opts: opts
   })
 }
@@ -293,25 +356,16 @@ function orderCheckProgress (opts) {
 function orderCheckResult (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/orderService/v1/order/checkResult',
+    url: '/visitor/orderService/ui/v1/order/checkResult',
     opts: opts
   })
 }
 
-/** 平台用户同意预约 */
-function orderApprove (opts) {
+/** 获得导入预约文件的校验进度 */
+function orderCheckProgress (opts) {
   return instance({
-    method: 'post',
-    url:  '/visitor/orderService/v1/order/approve',
-    opts: opts
-  })
-}
-
-/** 根据访客单批次取消预约 */
-function orderCancel (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/orderService/v1/order/cancel',
+    method: 'get',
+    url: '/visitor/orderService/ui/v1/order/checkProgress',
     opts: opts
   })
 }
@@ -320,43 +374,25 @@ function orderCancel (opts) {
 function orderCheckImport (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/orderService/v1/order/checkImport',
+    url: '/visitor/orderService/ui/v1/order/checkImport',
     opts: opts
   })
 }
 
-/** 内部人员更新密码 */
-function updatePwd (opts) {
+/** 平台用户同意预约 */
+function orderApprove (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/updatePwd',
+    url: '/visitor/orderService/ui/v1/order/approve',
     opts: opts
   })
 }
 
-/** 保存访客预约信息 */
-function orderAdd (opts) {
+/** 根据访客单批次取消预约 */
+function orderCancel (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/orderService/v1/order/add',
-    opts: opts
-  })
-}
-
-/** 内部人员预约更新 */
-function ordersUpdate (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/innerService/v1/orders/update',
-    opts: opts
-  })
-}
-
-/** 内部人员注册确认 */
-function registerConfirm (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/innerService/v1/registerConfirm',
+    url: '/visitor/orderService/ui/v1/order/cancel',
     opts: opts
   })
 }
@@ -365,25 +401,25 @@ function registerConfirm (opts) {
 function registerSendSms (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/registerSendSms',
+    url: '/visitor/innerService/ui/v1/registerSendSms',
     opts: opts
   })
 }
 
-/** 内部人员预约取消 */
-function ordersCancel (opts) {
+/** 内部人员更新密码 */
+function updatePwd (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/orders/cancel',
+    url: '/visitor/innerService/ui/v1/updatePwd',
     opts: opts
   })
 }
 
-/** 内部人员预约详情 */
-function ordersDetail (opts) {
+/** 保存访客预约信息 */
+function orderAdd (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/orders/detail',
+    url: '/visitor/orderService/ui/v1/order/add',
     opts: opts
   })
 }
@@ -392,25 +428,25 @@ function ordersDetail (opts) {
 function ordersReturn (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/orders/return',
+    url: '/visitor/innerService/ui/v1/orders/return',
     opts: opts
   })
 }
 
-/** 内部人员注销 */
-function logout (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/innerService/v1/logout',
-    opts: opts
-  })
-}
-
-/** 内部人员预约 */
-function ordersAdd (opts) {
+/** 内部人员预约更新 */
+function ordersUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/orders/add',
+    url: '/visitor/innerService/ui/v1/orders/update',
+    opts: opts
+  })
+}
+
+/** 内部人员注册确认 */
+function registerConfirm (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/innerService/ui/v1/registerConfirm',
     opts: opts
   })
 }
@@ -419,25 +455,25 @@ function ordersAdd (opts) {
 function ordersApprove (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/orders/approve',
+    url: '/visitor/innerService/ui/v1/orders/approve',
     opts: opts
   })
 }
 
-/** 内部人员忘记密码发送短信 */
-function forgetPwdSendSms (opts) {
+/** 内部人员预约取消 */
+function ordersCancel (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/forgetPwdSendSms',
+    url: '/visitor/innerService/ui/v1/orders/cancel',
     opts: opts
   })
 }
 
-/** 内部人员个人主页 */
-function home (opts) {
+/** 内部人员预约 */
+function ordersAdd (opts) {
   return instance({
-    method: 'get',
-    url:  '/visitor/innerService/v1/home',
+    method: 'post',
+    url: '/visitor/innerService/ui/v1/orders/add',
     opts: opts
   })
 }
@@ -446,34 +482,34 @@ function home (opts) {
 function login (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/login',
+    url: '/visitor/innerService/ui/v1/login',
     opts: opts
   })
 }
 
-/** 访客名单组更新 */
-function groupsUpdate (opts) {
+/** 内部人员注销 */
+function logout (opts) {
   return instance({
-    method: 'post',
-    url:  '/visitor/groupService/v1/groups/update',
+    method: 'get',
+    url: '/visitor/innerService/ui/v1/logout',
     opts: opts
   })
 }
 
-/** 导入访客分组名单 */
-function importGroupRel (opts) {
+/** 内部人员忘记密码发送短信 */
+function forgetPwdSendSms (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/groupService/v1/import/groupRel',
+    url: '/visitor/innerService/ui/v1/forgetPwdSendSms',
     opts: opts
   })
 }
 
-/** 内部人员忘记密码校验验证码 */
-function forgetPwdCheckCode (opts) {
+/** 内部人员个人主页 */
+function home (opts) {
   return instance({
-    method: 'post',
-    url:  '/visitor/innerService/v1/forgetPwdCheckCode',
+    method: 'get',
+    url: '/visitor/innerService/ui/v1/home',
     opts: opts
   })
 }
@@ -482,16 +518,25 @@ function forgetPwdCheckCode (opts) {
 function forgetPwdConfirm (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/innerService/v1/forgetPwdConfirm',
+    url: '/visitor/innerService/ui/v1/forgetPwdConfirm',
     opts: opts
   })
 }
 
-/** 查询访客名单组 */
-function groups (opts) {
+/** 下载导入分组名单模板 */
+function templeDownload (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/groupService/v1/groups',
+    url: '/visitor/groupService/ui/v1/temple/download',
+    opts: opts
+  })
+}
+
+/** 内部人员忘记密码校验验证码 */
+function forgetPwdCheckCode (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/innerService/ui/v1/forgetPwdCheckCode',
     opts: opts
   })
 }
@@ -500,7 +545,7 @@ function groups (opts) {
 function groupsAdd (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/groupService/v1/groups/add',
+    url: '/visitor/groupService/ui/v1/groups/add',
     opts: opts
   })
 }
@@ -509,25 +554,25 @@ function groupsAdd (opts) {
 function groupsDelete (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/groupService/v1/groups/delete',
+    url: '/visitor/groupService/ui/v1/groups/delete',
     opts: opts
   })
 }
 
-/** 访客名单组关联查询 */
-function groupRels (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/groupService/v1/groupRels',
-    opts: opts
-  })
-}
-
-/** 访客名单组关联新增 */
-function groupRelsAdd (opts) {
+/** 访客名单组更新 */
+function groupsUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/groupService/v1/groupRels/add',
+    url: '/visitor/groupService/ui/v1/groups/update',
+    opts: opts
+  })
+}
+
+/** 查询访客名单组 */
+function groups (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/groupService/ui/v1/groups',
     opts: opts
   })
 }
@@ -536,106 +581,43 @@ function groupRelsAdd (opts) {
 function groupRelsDelete (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/groupService/v1/groupRels/delete',
+    url: '/visitor/groupService/ui/v1/groupRels/delete',
     opts: opts
   })
 }
 
-/** 导出分组名单 */
-function exportGroupRel (opts) {
-  return instance({
-    method: 'delete',
-    url:  '/visitor/groupService/v1/export/groupRel',
-    opts: opts
-  })
-}
-
-/** 导出分组名单 */
-function exportGroupRel (opts) {
-  return instance({
-    method: 'options',
-    url:  '/visitor/groupService/v1/export/groupRel',
-    opts: opts
-  })
-}
-
-/** 导出分组名单 */
-function exportGroupRel (opts) {
-  return instance({
-    method: 'patch',
-    url:  '/visitor/groupService/v1/export/groupRel',
-    opts: opts
-  })
-}
-
-/** 导出分组名单 */
-function exportGroupRel (opts) {
-  return instance({
-    method: 'head',
-    url:  '/visitor/groupService/v1/export/groupRel',
-    opts: opts
-  })
-}
-
-/** 导出分组名单 */
-function exportGroupRel (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/groupService/v1/export/groupRel',
-    opts: opts
-  })
-}
-
-/** 导出分组名单 */
-function exportGroupRel (opts) {
-  return instance({
-    method: 'put',
-    url:  '/visitor/groupService/v1/export/groupRel',
-    opts: opts
-  })
-}
-
-/** 访客事件（访客足迹记录） */
-function events (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/eventService/v1/events',
-    opts: opts
-  })
-}
-
-/** 下载导入分组名单模板 */
-function downloadTemple (opts) {
+/** 访客名单组关联查询 */
+function groupRels (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/groupService/v1/download/temple',
+    url: '/visitor/groupService/ui/v1/groupRels',
+    opts: opts
+  })
+}
+
+/** 访客名单组关联新增 */
+function groupRelsAdd (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/groupService/ui/v1/groupRels/add',
     opts: opts
   })
 }
 
 /** 导出分组名单 */
-function exportGroupRel (opts) {
+function groupRelExport (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/groupService/v1/export/groupRel',
+    url: '/visitor/groupService/ui/v1/groupRel/export',
     opts: opts
   })
 }
 
-/** 获取短信内容配置 */
-function smsConfigs (opts) {
-  return instance({
-    method: 'get',
-    url:  '/visitor/configService/v1/smsConfigs',
-    opts: opts
-  })
-}
-
-/** 短信内容配置还原 */
-function smsConfigsReset (opts) {
+/** 导入访客分组名单 */
+function groupRelImport (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/configService/v1/smsConfigs/reset',
+    url: '/visitor/groupService/ui/v1/groupRel/import',
     opts: opts
   })
 }
@@ -644,25 +626,34 @@ function smsConfigsReset (opts) {
 function smsConfigsUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/configService/v1/smsConfigs/update',
+    url: '/visitor/configService/ui/v1/smsConfigs/update',
     opts: opts
   })
 }
 
-/** 获取场景参数 */
-function sceneConfig (opts) {
+/** 访客事件（访客足迹记录） */
+function events (opts) {
   return instance({
-    method: 'get',
-    url:  '/visitor/configService/v1/sceneConfig',
+    method: 'post',
+    url: '/visitor/eventService/ui/v1/events',
     opts: opts
   })
 }
 
-/** 场景参数还原 */
-function sceneConfigReset (opts) {
+/** 获取短信内容配置 */
+function smsConfigs (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/configService/v1/sceneConfig/reset',
+    url: '/visitor/configService/ui/v1/smsConfigs',
+    opts: opts
+  })
+}
+
+/** 短信内容配置还原 */
+function smsConfigsReset (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/configService/ui/v1/smsConfigs/reset',
     opts: opts
   })
 }
@@ -671,25 +662,16 @@ function sceneConfigReset (opts) {
 function sceneConfigUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/configService/v1/sceneConfig/update',
+    url: '/visitor/configService/ui/v1/sceneConfig/update',
     opts: opts
   })
 }
 
-/** 修改访客预约单内容还原 */
-function orderTableConfigReset (opts) {
+/** 场景参数还原 */
+function sceneConfigReset (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/configService/v1/orderTableConfig/reset',
-    opts: opts
-  })
-}
-
-/** 修改访客预约单内容参数 */
-function orderTableConfigUpdate (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/configService/v1/orderTableConfig/update',
+    url: '/visitor/configService/ui/v1/sceneConfig/reset',
     opts: opts
   })
 }
@@ -698,7 +680,7 @@ function orderTableConfigUpdate (opts) {
 function recordTimeConfig (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/configService/v1/recordTimeConfig',
+    url: '/visitor/configService/ui/v1/recordTimeConfig',
     opts: opts
   })
 }
@@ -707,25 +689,16 @@ function recordTimeConfig (opts) {
 function recordTimeConfigUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/configService/v1/recordTimeConfig/update',
+    url: '/visitor/configService/ui/v1/recordTimeConfig/update',
     opts: opts
   })
 }
 
-/** 背景图片恢复默认 */
-function backPicReset (opts) {
+/** 获取场景参数 */
+function sceneConfig (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/configService/v1/backPic/reset',
-    opts: opts
-  })
-}
-
-/** 背景图片变更 */
-function backPicUpdate (opts) {
-  return instance({
-    method: 'post',
-    url:  '/visitor/configService/v1/backPic/update',
+    url: '/visitor/configService/ui/v1/sceneConfig',
     opts: opts
   })
 }
@@ -734,16 +707,25 @@ function backPicUpdate (opts) {
 function orderTableConfig (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/configService/v1/orderTableConfig',
+    url: '/visitor/configService/ui/v1/orderTableConfig',
     opts: opts
   })
 }
 
-/** 页面获取加密公钥 */
-function getPublicKey (opts) {
+/** 修改访客预约单内容还原 */
+function orderTableConfigReset (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/configService/ui/v1/orderTableConfig/reset',
+    opts: opts
+  })
+}
+
+/** 修改访客预约单内容参数 */
+function orderTableConfigUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/commonService/v1/getPublicKey',
+    url: '/visitor/configService/ui/v1/orderTableConfig/update',
     opts: opts
   })
 }
@@ -752,16 +734,25 @@ function getPublicKey (opts) {
 function getSelect (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/commonService/v1/getSelect',
+    url: '/visitor/commonService/ui/v1/getSelect',
     opts: opts
   })
 }
 
-/** 重新下发权限 */
-function authResultDownload (opts) {
+/** 背景图片恢复默认 */
+function backPicReset (opts) {
+  return instance({
+    method: 'get',
+    url: '/visitor/configService/ui/v1/backPic/reset',
+    opts: opts
+  })
+}
+
+/** 背景图片变更 */
+function backPicUpdate (opts) {
   return instance({
     method: 'post',
-    url:  '/visitor/authResultService/v1/authResult/download',
+    url: '/visitor/configService/ui/v1/backPic/update',
     opts: opts
   })
 }
@@ -770,96 +761,115 @@ function authResultDownload (opts) {
 function authResultPage (opts) {
   return instance({
     method: 'get',
-    url:  '/visitor/authResultService/v1/authResult/page',
+    url: '/visitor/authResultService/ui/v1/authResult/page',
+    opts: opts
+  })
+}
+
+/** 页面获取加密公钥 */
+function getPublicKey (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/commonService/ui/v1/getPublicKey',
+    opts: opts
+  })
+}
+
+/** 重新下发权限 */
+function authResultDownload (opts) {
+  return instance({
+    method: 'post',
+    url: '/visitor/authResultService/ui/v1/authResult/download',
     opts: opts
   })
 }
 
 export {
+  getImageCode,
+  ordersDetail,
+  readerTree,
+  pointFind,
+  areaTree,
+  deptTree,
+  groupRelsMove,
+  groupRelsUpdate,
   signOffPointsDelete,
+  purposesUpdate,
   signOffPointFind,
   signOffPoints,
   signOffPointsAdd,
   purposesAdd,
   purposesDelete,
-  purposesUpdate,
+  purposes,
+  privilegeGroupItems,
   privilegeGroupPage,
   privilegeGroupSave,
   privilegeGroupUpdateInfo,
-  purposes,
   privilegeGroupDetail,
   privilegeGroupItemPage,
-  privilegeGroupItems,
-  privilegeGroupChangeDefault,
-  privilegeGroupDelete,
   privilegeGroupDeleteItems,
   privilegeGroupAddItems,
-  privilegeItemRegion,
-  privilegeItemSaveSelectItems,
+  privilegeGroupChangeDefault,
+  privilegeGroupDelete,
   privilegeItemSelectedItems,
+  privilegeItemSaveSelectItems,
+  privilegeItemItemPage,
+  privilegeItemRegion,
+  personFuzzySearch,
   privilegeItemAlternativeItem,
   privilegeItemDeleteItems,
-  privilegeItemItemPage,
-  personFuzzySearch,
-  orderUpdate,
-  orderImportTemplate,
   orderPage,
   orderReturn,
+  orderUpdate,
+  orderImportTemplate,
   orderDetail,
   orderImport,
-  orderCheckProgress,
   orderCheckResult,
+  orderCheckProgress,
+  orderCheckImport,
   orderApprove,
   orderCancel,
-  orderCheckImport,
+  registerSendSms,
   updatePwd,
   orderAdd,
+  ordersReturn,
   ordersUpdate,
   registerConfirm,
-  registerSendSms,
-  ordersCancel,
-  ordersDetail,
-  ordersReturn,
-  logout,
-  ordersAdd,
   ordersApprove,
+  ordersCancel,
+  ordersAdd,
+  login,
+  logout,
   forgetPwdSendSms,
   home,
-  login,
-  groupsUpdate,
-  importGroupRel,
-  forgetPwdCheckCode,
   forgetPwdConfirm,
-  groups,
+  templeDownload,
+  forgetPwdCheckCode,
   groupsAdd,
   groupsDelete,
+  groupsUpdate,
+  groups,
+  groupRelsDelete,
   groupRels,
   groupRelsAdd,
-  groupRelsDelete,
-  exportGroupRel,
-  exportGroupRel,
-  exportGroupRel,
-  exportGroupRel,
-  exportGroupRel,
-  exportGroupRel,
+  groupRelExport,
+  groupRelImport,
+  smsConfigsUpdate,
   events,
-  downloadTemple,
-  exportGroupRel,
   smsConfigs,
   smsConfigsReset,
-  smsConfigsUpdate,
-  sceneConfig,
-  sceneConfigReset,
   sceneConfigUpdate,
-  orderTableConfigReset,
-  orderTableConfigUpdate,
+  sceneConfigReset,
   recordTimeConfig,
   recordTimeConfigUpdate,
+  sceneConfig,
+  orderTableConfig,
+  orderTableConfigReset,
+  orderTableConfigUpdate,
+  getSelect,
   backPicReset,
   backPicUpdate,
-  orderTableConfig,
+  authResultPage,
   getPublicKey,
-  getSelect,
-  authResultDownload,
-  authResultPage
+  authResultDownload
 }

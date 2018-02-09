@@ -4,7 +4,7 @@ module.exports = {
   template: "../", 
   projects: [
     {
-      id: "5a71648792dd612bd4b83077", // 例：58fef6ac5e43ae5dbea5eb53
+      id: "5a6f023d92dd612bd4b81e1c", // 例：58fef6ac5e43ae5dbea5eb53
       name: "visitor" // 该项目下的 API 生成之后会被放到 api/demo 目录下
     }
   ]
