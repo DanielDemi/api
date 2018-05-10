@@ -48,7 +48,7 @@ http.interceptors.response.use(function (response) {
 }, function (error) {
   if (error.message.indexOf('timeout') > -1) {
     // 多语言需要自己在项目中配置
-    Message.error('请求超时。')
+    Message.error(i18n.t('common.timeout'))
   }
   // 对响应错误做点什么
   return Promise.reject(error)
