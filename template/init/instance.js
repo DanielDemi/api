@@ -26,7 +26,7 @@ http.interceptors.response.use(function (response) {
   }
 
    // 根据响应数据判断是否登录过期
-  if (response.data.success === false && response.data.errorCode === 'pleaseRefreshByHeader') {
+  if (response.data.errorCode === 'pleaseRefreshByHeader') {
     let refreshUrl = response.headers['refresh-url'].split('?')[0]
     refreshUrl = refreshUrl + '?service=' + location.protocol + '//' + location.host + location.pathname + encodeURIComponent(location.search)
     location.href = refreshUrl
@@ -35,7 +35,7 @@ http.interceptors.response.use(function (response) {
   // 对错误进行统一处理
   if (response.data.code !== '0' && response.data.msg) {
     if (!response.config.noMsg && response.data.msg) {
-      Message.error(i18n.t(response.data.msg))
+      Message.error(i18n.t(response.data.msg, response.data.data))
     }
     return Promise.reject(response)
   } else if (response.data.code === '0' && response.config.successNotify) { // 弹出成功提示
@@ -46,6 +46,10 @@ http.interceptors.response.use(function (response) {
     data: response.data.data
   })
 }, function (error) {
+  if (error.message.indexOf('timeout') > -1) {
+    // 多语言需要自己在项目中配置
+    Message.error('请求超时。')
+  }
   // 对响应错误做点什么
   return Promise.reject(error)
 })
