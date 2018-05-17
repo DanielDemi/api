@@ -33,7 +33,7 @@ http.interceptors.response.use(function (response) {
   }
 
   // 对错误进行统一处理
-  if (response.data.code !== '0' && response.data.msg) {
+  if (response.data.code !== '0') {
     if (!response.config.noMsg && response.data.msg) {
       Message.error(i18n.t(response.data.msg, response.data.data))
     }
